@@ -8,12 +8,15 @@
 </head>
   <body>
     <h1>HomeWork5</h1>
-    <input type="text" name="" id="nameInput" placeholder="Добавьте задачу">
-    <button onclick="addName()">Добавить задачу</button>
-    <input type="text" id="filterInput" placeholder="Фильтр задач" oninput="filterNames()">
-    <button onclick="filterAcc(true)" id="filterAccept">Показать выполненные</button>
-    <button onclick="filterFal(false)" id="fillterFal">Показать НЕ выполненные</button>
-    <ul id="nameList"></ul>
+    <div class="create-task">
+      <input type="text" id="taskName">
+      <button id="addBtn">Добавить</button>
+    </div>
+
+    <div class="container" id="container">
+
+    </div>
+
     <script src="./scripts/script.js"></script>
 </body>
 </html>

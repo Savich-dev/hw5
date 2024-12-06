@@ -86,8 +86,8 @@ function filterNames(){
 }
 
 function filterAcc(){
-  const filterAccept = document.getElementById('filterAccept');
-  const filterVal = filterAccept.value.true();
+  // const filterAccept = document.getElementById('filterAccept');
+  // const filterVal = filterAccept.value.true();
   const nameList = document.getElementById('nameList');
   
     Array.from(nameList.children).forEach(li=>{

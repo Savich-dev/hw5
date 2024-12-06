@@ -11,8 +11,8 @@
     <input type="text" name="" id="nameInput" placeholder="Добавьте задачу">
     <button onclick="addName()">Добавить задачу</button>
     <input type="text" id="filterInput" placeholder="Фильтр задач" oninput="filterNames()">
-    <button onclick="fillterAcc()" id="filterAccept">Показать выполненные</button>
-    <button onclick="fillterFal()" id="fillterFal">Показать НЕ выполненные</button>
+    <button onclick="fillterAcc(true)" id="filterAccept">Показать выполненные</button>
+    <button onclick="fillterFal(false)" id="fillterFal">Показать НЕ выполненные</button>
     <ul id="nameList"></ul>
     <script src="./scripts/script.js"></script>
 </body>

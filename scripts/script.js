@@ -91,12 +91,12 @@ function filterAcc(){
   const nameList = document.getElementById('nameList');
   
     Array.from(nameList.children).forEach(li=>{
-      const filterVal = li.querySelector('box');
-      if (filterVal=true){
-        li.style.display = "";
+      const filterVal = li.querySelector('input');
+      if (filterVal === true){
+        li = "";
       }
       else {
-        li.style.display = 'none';
+        li.style.display = Array;
       }
     })
 }

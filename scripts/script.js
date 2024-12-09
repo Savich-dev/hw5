@@ -9,29 +9,16 @@ const modalId = document.getElementById('modalId')
 const modalName = document.getElementById('modalName')
 const saveBtn = document.getElementById('saveBtn')
 
-
-const filterFalseButton = document.getElementById('filterFalse')
-const filterAcceptButton = document.getElementById('filterAccept')
-
-
-filterAcceptButton.addEventListener('click', () => {
-  const acceptTasks = {}
-})
-
-filterFalseButton.addEventListener('click', () => {
-  const falseTasks = {}
-})
-
 addBtn.addEventListener('click', () => {
   const newTask = {
     id: taskId++,
     name: taskNameInput.value,
-    value: false,
+    value: undefined,
   }
   taskNameInput.value = ''
   tasks.push(newTask)
   render()
-  // console.log(tasks)
+  console.log(tasks)
 })
 
 saveBtn.addEventListener('click', () => {
@@ -43,6 +30,7 @@ saveBtn.addEventListener('click', () => {
     }
   })
   render()
+  console.log(tasks)
   modal.classList.add('hidden')
 })
 
@@ -70,16 +58,9 @@ const render = () => {
       tasks = tasks.filter((item) => item.id !== task.id)
       render()
     }
-    const checkboxValue = document.createElement('checkbox')
-    checkboxValue.innerHTML = task.value
-    checkboxValue.value = true
-    checkboxValue.onclick = () => {
-      tasks = tasks.filter((item) => item.value !== true)
-      render()
-    }
-    
     taskDiv.appendChild(deleteBtn)
     taskDiv.appendChild(editBtn)
     container.appendChild(taskDiv)
-  })
+    }
+  )
 }

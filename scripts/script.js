@@ -13,7 +13,7 @@ addBtn.addEventListener('click', () => {
   const newTask = {
     id: taskId++,
     name: taskNameInput.value,
-    value: undefined,
+    res: Boolean,
   }
   taskNameInput.value = ''
   tasks.push(newTask)
@@ -27,7 +27,7 @@ saveBtn.addEventListener('click', () => {
   tasks.map((task) => {
     if(task.id === Number(newId)){
       task.name = newName
-    }
+    }return task
   })
   render()
   console.log(tasks)
@@ -55,11 +55,38 @@ const render = () => {
       modal.classList.remove('hidden')
       modalId.value = task.id
       modalName.value = task.name
-      tasks = tasks.filter((item) => item.id !== task.id)
-      render()
-    }
+      }
+    const accDiv = document.createElement('div')
+    accDiv.innerText = "Выполнено"
+
+    const accBtn = document.createElement('input')
+    accBtn.type="checkbox"
+    const newId = modalId.value
+    accBtn.addEventListener('change', () => {
+      if (accBtn.checked){
+        tasks.map((task) => {
+        if(task.id === Number(newId)){
+          task.res=true ;
+          taskDiv.classList.add('accTask')
+        }
+        return task
+        })
+      }else {
+          tasks.map((task) => {  
+            if (task.id === Number(newId)){
+            task.res=false ;
+            taskDiv.classList.add('falseTask')
+            }
+            return task
+          })
+        }
+      }
+      // render()
+    )
     taskDiv.appendChild(deleteBtn)
     taskDiv.appendChild(editBtn)
+    taskDiv.appendChild(accDiv)
+    taskDiv.appendChild(accBtn)
     container.appendChild(taskDiv)
     }
   )

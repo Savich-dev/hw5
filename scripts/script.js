@@ -1,4 +1,4 @@
-let tasks = []
+let tasksList = []
 let taskId = 1
 const taskNameInput = document.getElementById('taskName')
 const addBtn = document.getElementById('addBtn')
@@ -21,73 +21,61 @@ addBtn.addEventListener('click', () => {
     res: false,
   }
   taskNameInput.value = ''
-  tasks.push(newTask)
+  tasksList.push(newTask)
   render()
-  // console.log(tasks)
 })
 
 saveBtn.addEventListener('click', () => {
   const newId = modalId.value
   const newName = modalName.value
-  tasks.map((task) => {
+  tasksList.map((task) => {
     if(task.id === Number(newId)){
       task.name = newName
     }return task
   })
   render()
-  // console.log(tasks)
   modal.classList.add('hidden')
 })
 
-
 const render = () => {
   container.innerHTML = ''
-  tasks.map((task) => {
-    filterAccept.addEventListener('click', () =>{
-      if (tasks.res=true){
-        taskDiv.classList.remove('hidden')
-        taskDiv.classList.add('accTask')
-        }
-        else{
+  tasksList.map((task) => {
+
+    // if (filterT=0){
+    //   tasksList = tasksList
+    // }
+    // else if (filterT=1){
+    //   tasksList = tasksList.filter((item) => task.res === true)
+    // } else if (filterT=2){
+    //   tasksList = tasksList.filter((item) => task.res === false)
+    // }
+
+    filterAccept.onclick = () => {
+        if(task.res === false){
           taskDiv.classList.add('hidden')
         }
-        // render()
       }
-    )
-    
-    filterFalse.addEventListener('click', () =>{
-      if (tasks.res=false){
-        taskDiv.classList.remove('hidden')
-        taskDiv.classList.add('falseTask')
-        }
-        else{ 
-          taskDiv.classList.add('hidden')
-        }
-        // render()
-      } 
-    )
-    
-    filterAll.addEventListener('click', () =>{
-      taskDiv.classList.add('hidden')
-      // render()
-    })
-    
+    filterFalse.onclick = () => {
+      if (task.res === true){
+        taskDiv.classList.add('hidden')
+      }
+    }
+    filterAll.onclick = () =>{
+      taskDiv.classList.remove('hidden')
+    }
+
     const taskDiv = document.createElement("div")
-    // taskDiv.classList.remove('hidden')
-        if (task.res === true){
-            taskDiv.classList.add('accTask')}
-        else{
-          taskDiv.classList.add('task-div')
-        }
-    taskDiv.innerText = task.name
     
+    taskDiv.innerText = task.name
+    taskDiv.classList.add("task-div")
     const deleteBtn = document.createElement('button')
     deleteBtn.classList.add('delete-btn')
     deleteBtn.innerText = "Удалить"
     deleteBtn.onclick = () => {
-      tasks = tasks.filter((item) => item.id !== task.id)
+      tasksList = tasksList.filter((item) => item.id !== task.id)
       render()
     }
+    
     const editBtn = document.createElement('button')
     editBtn.classList.add('edit-Btn')
     editBtn.innerText = "Редактировать"
@@ -102,9 +90,8 @@ const render = () => {
     accBtn.addEventListener('click', () => {
       task.res=!task.res;
       render()
-    }
+    } 
     )
-
     taskDiv.appendChild(deleteBtn)
     taskDiv.appendChild(editBtn)
     taskDiv.appendChild(accBtn)
